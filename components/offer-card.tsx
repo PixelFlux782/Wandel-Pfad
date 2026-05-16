@@ -9,6 +9,7 @@ interface OfferCardProps {
   availability: string;
   href: string;
   index?: number;
+  variant?: 'default' | 'home';
 }
 
 const metaItems = [
@@ -26,42 +27,90 @@ function getFormatLabel(title: string) {
   return 'Angebot';
 }
 
-export function OfferCard({ title, description, duration, price, availability, href, index = 0 }: OfferCardProps) {
+export function OfferCard({ title, description, duration, price, availability, href, index = 0, variant = 'default' }: OfferCardProps) {
   const meta = { duration, price, availability };
   const formatLabel = getFormatLabel(title);
+
+  if (variant === 'home') {
+    return (
+      <article className="group relative py-12 sm:py-14 lg:py-16">
+        <div
+          className={cn(
+            'grid gap-10 lg:grid-cols-[minmax(5rem,0.14fr)_minmax(0,0.58fr)_minmax(18rem,0.28fr)] lg:items-start lg:gap-12',
+            index % 2 === 1 ? 'lg:pl-[6%]' : 'lg:pr-[4%]'
+          )}
+        >
+          <div className="flex items-start gap-4 lg:block">
+            <p className="text-[0.62rem] uppercase leading-5 tracking-[0.34em] text-[#7B746D]/52">{String(index + 1).padStart(2, '0')}</p>
+            <div className="mt-1 hidden h-px w-14 bg-text/[0.08] lg:block" />
+          </div>
+
+          <div className="min-w-0">
+            <p className="text-[0.62rem] uppercase leading-5 tracking-[0.3em] text-[#7B746D]/62">{formatLabel}</p>
+            <h3 className="mt-5 max-w-3xl font-serif text-[clamp(2.05rem,4.4vw,4.15rem)] font-medium leading-[1.02] tracking-normal text-text sm:leading-[0.98]">
+              {title}
+            </h3>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[#504B44] sm:mt-6">{description}</p>
+          </div>
+
+          <div className="min-w-0 lg:pt-10">
+            <div className="grid gap-5 border-t border-text/[0.08] pt-6 sm:grid-cols-3 sm:gap-6 lg:grid-cols-1 lg:border-t-0 lg:pt-0">
+              {metaItems.map((item) => (
+                <div key={item.key} className="min-w-0">
+                  <dt className="text-[0.6rem] uppercase leading-5 tracking-[0.26em] text-[#7B746D]/62">{item.label}</dt>
+                  <dd className="mt-2 text-sm leading-6 text-text/74">{meta[item.key]}</dd>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href={href}
+              className="resonant-link mt-8 inline-flex border-text/18 text-text/66 hover:border-text/42 hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
+            >
+              Passenden Einstieg finden
+            </Link>
+          </div>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article
       className={cn(
-        'group relative overflow-hidden border-t border-text/[0.11] py-9 sm:py-11 lg:py-12',
-        'before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-full before:bg-[linear-gradient(90deg,_rgba(255,252,246,0.34),_rgba(255,252,246,0.08)_48%,_transparent_100%)] before:opacity-0 before:transition-opacity before:duration-700 hover:before:opacity-100',
+        'group relative border-t border-text/[0.09] py-11 sm:py-14 lg:py-16',
         index === 0 ? 'border-text/[0.14]' : ''
       )}
     >
-      <div className="relative grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(13rem,17rem)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(15rem,0.28fr)] lg:gap-16">
+      <div
+        className={cn(
+          'relative grid gap-9 md:grid-cols-[minmax(0,1fr)_minmax(13rem,17rem)] md:items-start md:gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(15rem,0.3fr)] lg:gap-20',
+          index % 2 === 1 ? 'lg:pl-14' : ''
+        )}
+      >
         <div className="min-w-0">
-          <p className="text-[0.66rem] uppercase leading-5 tracking-[0.26em] text-[#7B746D]/78">{formatLabel}</p>
-          <h3 className="mt-4 max-w-3xl font-serif text-[clamp(2.2rem,4.2vw,3.6rem)] font-medium leading-[1.04] tracking-normal text-text">
+          <p className="text-[0.64rem] uppercase leading-5 tracking-[0.3em] text-[#7B746D]/68">{formatLabel}</p>
+          <h3 className="mt-5 max-w-3xl font-serif text-[clamp(2.25rem,4vw,3.55rem)] font-medium leading-[1.02] tracking-normal text-text">
             {title}
           </h3>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-[#504B44]">{description}</p>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-[#504B44]">{description}</p>
         </div>
 
-        <div className="min-w-0 border-t border-text/[0.08] pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-1 lg:pl-10">
-          <dl className="grid gap-4 sm:grid-cols-3 md:grid-cols-1 md:gap-5">
+        <div className="min-w-0 border-t border-text/[0.065] pt-7 md:border-l md:border-t-0 md:pl-9 md:pt-1 lg:pl-11">
+          <dl className="grid gap-5 sm:grid-cols-3 md:grid-cols-1 md:gap-6">
             {metaItems.map((item) => (
               <div key={item.key} className="min-w-0">
-                <dt className="text-[0.62rem] uppercase leading-5 tracking-[0.24em] text-[#7B746D]/68">{item.label}</dt>
-                <dd className="mt-1.5 text-sm leading-6 text-text/84">{meta[item.key]}</dd>
+                <dt className="text-[0.6rem] uppercase leading-5 tracking-[0.26em] text-[#7B746D]/62">{item.label}</dt>
+                <dd className="mt-2 text-sm leading-6 text-text/78">{meta[item.key]}</dd>
               </div>
             ))}
           </dl>
 
           <Link
             href={href}
-            className="mt-7 inline-flex min-h-11 w-full items-center justify-center rounded-full border border-text/[0.17] px-5 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-text/78 transition duration-700 hover:border-text/[0.32] hover:bg-text/[0.035] hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60 sm:w-auto md:w-full"
+            className="resonant-link mt-8 border-text/22 text-text/66 hover:border-text/42 hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
           >
-            Termin buchen
+            In Ruhe anfragen
           </Link>
         </div>
       </div>

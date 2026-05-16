@@ -62,8 +62,11 @@ export default function KontaktPage() {
         <div className="border-y border-text/12 py-10">
           <p className="eyebrow">Ablauf</p>
           <p className="mt-5 max-w-3xl text-base leading-8 text-[#504B44]">Sobald deine Anfrage angekommen ist, bekommst du in Ruhe eine Rückmeldung. Wir stimmen gemeinsam ab, ob ein Erstgespräch oder eine direkte Empfehlung für ein Angebot der passendere Weg ist.</p>
-          <Link href="/termine" className="mt-9 inline-flex">
-            <Button variant="secondary">Termine ansehen</Button>
+          <Link
+            href="/termine"
+            className="resonant-link mt-9 border-text/22 text-text/66 hover:border-text/42 hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
+          >
+            Passenden Einstieg finden
           </Link>
         </div>
       </div>

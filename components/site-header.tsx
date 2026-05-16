@@ -24,23 +24,24 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', updateScrolled);
   }, []);
 
-  const isLight = scrolled;
+  const heroTop = pathname === '/' && !scrolled && !open;
+  const isLight = !heroTop;
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-[60] border-b transition-[background-color,backdrop-filter,border-color,box-shadow,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+        'fixed inset-x-0 top-0 z-[60] border-b transition-[background-color,backdrop-filter,border-color,box-shadow,color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]',
         isLight
-          ? 'border-[#191612]/10 bg-[rgba(244,238,228,0.88)] text-[#211E1A] shadow-[0_12px_34px_rgba(31,28,24,0.08)] backdrop-blur-md'
-          : 'border-white/[0.1] bg-[rgba(12,10,8,0.52)] text-[#F8F1E6] shadow-[0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl'
+          ? 'border-[#191612]/[0.08] bg-[rgba(246,242,235,0.82)] text-[#211E1A] shadow-[0_16px_46px_rgba(31,28,24,0.055)] backdrop-blur-xl'
+          : 'border-white/[0.07] bg-[rgba(8,10,7,0.16)] text-[#F8F1E6] shadow-none backdrop-blur-[4px]'
       )}
     >
-      <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link
           href="/"
           className={cn(
-            'text-[0.72rem] font-semibold uppercase tracking-[0.3em] transition-colors duration-500',
-            isLight ? 'text-[#211E1A] hover:text-[#4E4236]' : 'text-[#F8F1E6]/96 hover:text-white'
+            'text-[0.68rem] font-semibold uppercase tracking-[0.3em] transition-colors duration-700 sm:text-[0.7rem] sm:tracking-[0.34em]',
+            isLight ? 'text-[#211E1A]/88 hover:text-[#211E1A]' : 'text-[#F8F1E6]/90 hover:text-white'
           )}
         >
           Wandel:Pfad
@@ -53,12 +54,12 @@ export function SiteHeader() {
               href={link.href}
               aria-current={pathname === link.href ? 'page' : undefined}
               className={cn(
-                'relative py-2 text-[0.76rem] font-semibold uppercase tracking-[0.13em] transition-colors duration-500 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100',
+                'relative py-2 text-[0.72rem] font-semibold uppercase tracking-[0.15em] transition-colors duration-700 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-500 hover:after:scale-x-100',
                 isLight
-                  ? 'text-[#3A342E] hover:text-[#211E1A] after:bg-[#2A251F]/32'
-                  : 'text-[#F8F1E6]/86 hover:text-white after:bg-[#F8F1E6]/42',
+                  ? 'text-[#2D2923]/68 hover:text-[#211E1A] after:bg-[#2A251F]/30'
+                  : 'text-[#F8F1E6]/74 hover:text-white after:bg-[#F8F1E6]/38',
                 pathname === link.href &&
-                  (isLight ? 'text-[#211E1A] after:scale-x-100' : 'text-white after:scale-x-100')
+                  (isLight ? 'text-[#211E1A] after:scale-x-100' : 'text-white/94 after:scale-x-100')
               )}
             >
               {link.label}
@@ -68,12 +69,12 @@ export function SiteHeader() {
             href="/termine"
             aria-current={pathname === '/termine' ? 'page' : undefined}
             className={cn(
-              'rounded-full border px-5 py-2.5 text-[0.74rem] font-semibold uppercase tracking-[0.14em] transition duration-500 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D2BE98]/75',
+              'border-b pb-1 text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition duration-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D2BE98]/75',
               isLight
-                ? 'border-[#211E1A]/20 bg-[rgba(33,30,26,0.05)] text-[#211E1A] hover:border-[#211E1A]/32 hover:bg-[rgba(33,30,26,0.08)]'
-                : 'border-[#F8F1E6]/34 bg-[rgba(248,241,230,0.1)] text-[#F8F1E6]/95 hover:border-[#F8F1E6]/48 hover:bg-[rgba(248,241,230,0.15)] hover:text-white',
+                ? 'border-[#211E1A]/20 text-[#211E1A]/74 hover:border-[#211E1A]/42 hover:text-[#211E1A]'
+                : 'border-[#F8F1E6]/24 text-[#F8F1E6]/76 hover:border-[#F8F1E6]/48 hover:text-white',
               pathname === '/termine' &&
-                (isLight ? 'border-[#211E1A]/36 bg-[rgba(33,30,26,0.09)]' : 'border-[#F8F1E6]/52 bg-[rgba(248,241,230,0.16)] text-white')
+                (isLight ? 'border-[#211E1A]/48 text-[#211E1A]' : 'border-[#F8F1E6]/56 text-white')
             )}
           >
             Termine
@@ -85,10 +86,10 @@ export function SiteHeader() {
           aria-label="Navigation oeffnen"
           aria-expanded={open}
           className={cn(
-            'inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-500 md:hidden',
+            'inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-700 md:hidden',
             isLight
-              ? 'border-[#211E1A]/22 bg-[rgba(33,30,26,0.05)] text-[#211E1A] hover:border-[#211E1A]/34 hover:bg-[rgba(33,30,26,0.08)]'
-              : 'border-[#F8F1E6]/34 bg-[rgba(248,241,230,0.1)] text-[#F8F1E6]/96 hover:border-[#F8F1E6]/48 hover:bg-[rgba(248,241,230,0.15)] hover:text-white'
+              ? 'border-[#211E1A]/18 bg-[rgba(33,30,26,0.035)] text-[#211E1A] hover:border-[#211E1A]/32 hover:bg-[rgba(33,30,26,0.06)]'
+              : 'border-[#F8F1E6]/24 bg-[rgba(248,241,230,0.04)] text-[#F8F1E6]/92 hover:border-[#F8F1E6]/42 hover:bg-[rgba(248,241,230,0.08)] hover:text-white'
           )}
         >
           {open ? <X size={19} strokeWidth={1.7} /> : <Menu size={19} strokeWidth={1.7} />}
@@ -98,11 +99,11 @@ export function SiteHeader() {
       {open ? (
         <div
           className={cn(
-            'border-t px-6 pb-7 backdrop-blur-xl md:hidden',
-            isLight ? 'border-[#191612]/10 bg-[rgba(244,238,228,0.96)]' : 'border-white/[0.1] bg-[rgba(12,10,8,0.94)]'
+            'border-t px-5 pb-8 shadow-[0_24px_60px_rgba(31,28,24,0.12)] backdrop-blur-2xl md:hidden',
+            isLight ? 'border-[#191612]/[0.08] bg-[rgba(246,242,235,0.96)]' : 'border-white/[0.1] bg-[rgba(12,10,8,0.94)]'
           )}
         >
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 pt-4" aria-label="Mobile Navigation">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1 pt-5" aria-label="Mobile Navigation">
             {navLinks
               .filter((link) => link.href !== '/termine')
               .map((link) => (
@@ -112,8 +113,8 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   aria-current={pathname === link.href ? 'page' : undefined}
                   className={cn(
-                    'min-h-12 py-3 text-sm font-semibold uppercase tracking-[0.15em] transition-colors duration-500',
-                    isLight ? 'text-[#3A342E] hover:text-[#211E1A]' : 'text-[#F8F1E6]/84 hover:text-white',
+                    'border-b border-transparent py-4 text-sm font-semibold uppercase tracking-[0.16em] transition-colors duration-700',
+                    isLight ? 'text-[#2D2923]/72 hover:text-[#211E1A]' : 'text-[#F8F1E6]/78 hover:text-white',
                     pathname === link.href && (isLight ? 'text-[#211E1A]' : 'text-white')
                   )}
                 >
@@ -125,10 +126,10 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               aria-current={pathname === '/termine' ? 'page' : undefined}
               className={cn(
-                'mt-3 inline-flex min-h-12 items-center justify-center rounded-full border px-5 text-sm font-semibold uppercase tracking-[0.15em] transition duration-500 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D2BE98]/75',
+                'mt-5 inline-flex min-h-12 items-center justify-center rounded-full border px-5 text-sm font-semibold uppercase tracking-[0.15em] transition duration-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D2BE98]/75',
                 isLight
-                  ? 'border-[#211E1A]/22 bg-[rgba(33,30,26,0.05)] text-[#211E1A] hover:border-[#211E1A]/34 hover:bg-[rgba(33,30,26,0.08)]'
-                  : 'border-[#F8F1E6]/28 bg-[rgba(248,241,230,0.08)] text-[#F8F1E6]/92 hover:border-[#F8F1E6]/42 hover:bg-[rgba(248,241,230,0.13)] hover:text-white'
+                  ? 'border-[#211E1A]/18 bg-[rgba(33,30,26,0.035)] text-[#211E1A] hover:border-[#211E1A]/32 hover:bg-[rgba(33,30,26,0.06)]'
+                  : 'border-[#F8F1E6]/26 bg-[rgba(248,241,230,0.055)] text-[#F8F1E6]/90 hover:border-[#F8F1E6]/42 hover:bg-[rgba(248,241,230,0.1)] hover:text-white'
               )}
             >
               Termine

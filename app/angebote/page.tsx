@@ -37,22 +37,22 @@ export default function AngebotePage() {
           className="max-w-4xl"
         />
 
-        <div className="mt-20">
+        <div className="mt-24">
           {offerCards.map((offer, index) => (
             <OfferCard key={offer.title} {...offer} index={index} />
           ))}
         </div>
 
-        <div className="mt-32 grid gap-x-20 gap-y-14 lg:grid-cols-2">
-          {details.map((detail) => (
-            <article key={detail.title} className="border-t border-text/12 pt-8">
-              <h2 className="max-w-xl font-serif text-4xl font-medium leading-tight tracking-normal text-text sm:text-5xl">{detail.title}</h2>
-              <p className="mt-7 max-w-xl text-base leading-8 text-[#504B44]">{detail.text}</p>
+        <div className="mt-36 grid gap-x-24 gap-y-16 lg:grid-cols-2">
+          {details.map((detail, index) => (
+            <article key={detail.title} className={`border-t border-text/[0.09] pt-9 ${index % 2 ? 'lg:mt-16' : ''}`}>
+              <h2 className="max-w-xl font-serif text-[clamp(2.15rem,3.8vw,3.2rem)] font-medium leading-[1.04] tracking-normal text-text">{detail.title}</h2>
+              <p className="mt-8 max-w-xl text-base leading-8 text-[#504B44]">{detail.text}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-32 border-y border-text/12 py-12">
+        <div className="mt-40 border-y border-text/[0.09] py-14">
           <div className="grid gap-8 lg:grid-cols-[0.32fr_0.68fr] lg:items-start">
             <p className="eyebrow">Hinweis</p>
             <div>
@@ -61,7 +61,7 @@ export default function AngebotePage() {
               </p>
               <Link
                 href="/termine"
-                className="mt-9 inline-flex min-h-11 items-center rounded-full border border-text/[0.16] px-5 text-[0.72rem] font-normal uppercase tracking-[0.18em] text-text/78 transition duration-700 hover:border-text/[0.3] hover:bg-text/[0.03] hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
+                className="resonant-link mt-10 border-text/22 text-text/66 hover:border-text/42 hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
               >
                 Erstes Gespräch vereinbaren
               </Link>

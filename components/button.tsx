@@ -2,9 +2,9 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const variants = {
-  default: 'bg-text text-[#F8F1E6] shadow-none hover:bg-[#2B2722] focus-visible:ring-2 focus-visible:ring-accent/55 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-  secondary: 'border border-text/18 bg-transparent text-text hover:border-text/38 hover:bg-text/[0.035]',
-  subtle: 'border border-transparent bg-transparent text-text/78 hover:bg-text/[0.035] hover:text-text'
+  default: 'border border-text/20 bg-text/[0.88] text-[#F8F1E6] shadow-none hover:border-text/32 hover:bg-text/[0.82] focus-visible:ring-2 focus-visible:ring-accent/45 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+  secondary: 'border border-text/14 bg-transparent text-text/76 hover:border-text/26 hover:bg-text/[0.018] hover:text-text',
+  subtle: 'border border-transparent bg-transparent text-text/72 hover:text-text'
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
