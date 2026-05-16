@@ -37,7 +37,7 @@ export default function AngebotePage() {
           className="max-w-4xl"
         />
 
-        <div className="mt-24 grid gap-x-20 gap-y-10 lg:grid-cols-2 lg:gap-y-16">
+        <div className="mt-20">
           {offerCards.map((offer, index) => (
             <OfferCard key={offer.title} {...offer} index={index} />
           ))}

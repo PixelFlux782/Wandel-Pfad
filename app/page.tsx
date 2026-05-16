@@ -47,7 +47,7 @@ export default function Home() {
             description="Vier ruhige Angebote mit klaren Inhalten, die sich nicht aufdrängen, sondern tragen."
             className="max-w-3xl"
           />
-          <div className="mt-24 grid gap-x-20 gap-y-10 lg:grid-cols-2 lg:gap-y-16">
+          <div className="mt-20">
             {offerCards.map((offer, index) => (
               <OfferCard key={offer.title} {...offer} index={index} />
             ))}
