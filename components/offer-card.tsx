@@ -13,21 +13,24 @@ interface OfferCardProps {
 
 export function OfferCard({ title, description, duration, price, availability, href }: OfferCardProps) {
   return (
-    <article className="group rounded-[2rem] border border-border bg-white p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-soft">
-      <div className="space-y-4">
+    <article className="group relative overflow-hidden border-t border-text/12 py-9 transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:py-12">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-text/34 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+      <div className="grid gap-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(11rem,0.42fr)] lg:items-start">
         <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-muted">{duration}</p>
-          <h3 className="mt-3 text-2xl font-semibold text-text">{title}</h3>
+          <p className="eyebrow">{duration}</p>
+          <h3 className="mt-5 max-w-xl font-serif text-[clamp(2.45rem,5vw,4rem)] font-medium leading-[0.98] tracking-normal text-text">{title}</h3>
+          <p className="mt-7 max-w-xl text-base leading-8 text-[#504B44]">{description}</p>
         </div>
-        <p className="text-base leading-8 text-[#504B44]">{description}</p>
-        <div className="flex flex-wrap items-center gap-3 text-sm text-muted">
-          <span className="rounded-full border border-border bg-background px-3 py-1">{price}</span>
-          <span>{availability}</span>
+        <div className="border-t border-text/10 pt-5 text-sm text-muted lg:border-t-0 lg:pt-2">
+          <span className="block font-serif text-3xl font-medium leading-none tracking-normal text-text">{price}</span>
+          <span className="mt-4 block text-[0.68rem] uppercase leading-5 tracking-[0.28em]">{availability}</span>
+          <Link href={href} className={cn('mt-8 inline-flex w-full justify-start sm:w-auto', 'focus:outline-none')}>
+            <Button variant="secondary" className="w-full shadow-none sm:w-auto">
+              Termin buchen
+            </Button>
+          </Link>
         </div>
       </div>
-      <Link href={href} className={cn('mt-6 inline-flex w-full justify-center', 'group-hover:underline')}>
-        <Button variant="secondary" className="w-full">Termin buchen</Button>
-      </Link>
     </article>
   );
 }
