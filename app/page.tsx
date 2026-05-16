@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Button } from '@/components/button';
 import { HeroSection } from '@/components/hero-section';
 import { SectionHeading } from '@/components/section-heading';
 import { OfferCard } from '@/components/offer-card';
@@ -48,9 +47,9 @@ export default function Home() {
             description="Vier ruhige Angebote mit klaren Inhalten, die sich nicht aufdrängen, sondern tragen."
             className="max-w-3xl"
           />
-          <div className="mt-24 grid gap-x-16 gap-y-6 lg:grid-cols-2">
-            {offerCards.map((offer) => (
-              <OfferCard key={offer.title} {...offer} />
+          <div className="mt-24 grid gap-x-20 gap-y-10 lg:grid-cols-2 lg:gap-y-16">
+            {offerCards.map((offer, index) => (
+              <OfferCard key={offer.title} {...offer} index={index} />
             ))}
           </div>
         </div>
@@ -77,9 +76,9 @@ export default function Home() {
       <section className="editorial-section-compact bg-background">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Ablauf / Einstieg" description="Ein klarer, ruhiger Prozess, der Vertrauen schafft und Unsicherheit nimmt." className="max-w-3xl" />
-          <div className="mt-20 grid gap-x-16 gap-y-2 lg:grid-cols-1">
-            {timelineSteps.map((step) => (
-              <ProcessStep key={step.title} step={step.title} detail={step.description} />
+          <div className="mt-20">
+            {timelineSteps.map((step, index) => (
+              <ProcessStep key={step.title} step={step.title} detail={step.description} index={index} />
             ))}
           </div>
         </div>
@@ -94,20 +93,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-[#1C2118] px-6 py-28 text-center text-white sm:px-8 sm:py-40 lg:px-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(201,185,157,0.2),transparent_34%),linear-gradient(180deg,_rgba(255,255,255,0.04),_rgba(0,0,0,0.18))]" />
-        <div className="pointer-events-none absolute inset-0 film-grain opacity-[0.13] mix-blend-soft-light" />
-        <div className="relative mx-auto max-w-4xl">
+      <section className="relative bg-[#1C2118] px-6 py-28 text-white sm:px-8 sm:py-36 lg:px-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(201,185,157,0.14),transparent_38rem),linear-gradient(180deg,_rgba(255,255,255,0.035),_rgba(0,0,0,0.2))]" />
+        <div className="pointer-events-none absolute inset-0 film-grain opacity-[0.1] mix-blend-soft-light" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.32fr_0.68fr] lg:items-start">
           <p className="text-[0.68rem] uppercase tracking-[0.38em] text-white/46">Einladung</p>
-          <h2 className="mt-8 font-serif text-5xl font-medium leading-[0.98] tracking-normal text-[#F5EFE3] sm:text-7xl">Wenn dich etwas anspricht, kannst du in Ruhe den nächsten Schritt wählen.</h2>
-          <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-[#E1D8C8]/76">Ob ein erstes Gespräch, ein einzelner Termin oder ein kontinuierlicher Weg - es geht darum, einen Raum zu öffnen, in dem du wieder bei dir ankommen kannst.</p>
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/termine">
-              <Button className="bg-[#F5EFE3] text-[#171813] shadow-none hover:bg-white focus-visible:ring-[#C9B99D] focus-visible:ring-offset-[#171813]">Erstes Gespräch vereinbaren</Button>
-            </Link>
-            <Link href="/angebote">
-              <Button variant="subtle" className="border border-white/22 text-[#F5EFE3]/88 hover:border-white/42 hover:bg-white/8 hover:text-white">Angebote ansehen</Button>
-            </Link>
+          <div>
+            <h2 className="max-w-4xl font-serif text-5xl font-medium leading-[0.98] tracking-normal text-[#F5EFE3] sm:text-7xl">
+              Wenn sich etwas davon stimmig anfühlt, können wir in Ruhe schauen, was gerade sinnvoll ist.
+            </h2>
+            <p className="mt-8 max-w-2xl text-base leading-8 text-[#E1D8C8]/76">
+              Ob ein erstes Gespräch, ein einzelner Termin oder ein kontinuierlicher Weg: Es geht nicht um Druck, sondern um einen passenden Anfang.
+            </p>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link
+                href="/termine"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#F5EFE3]/24 px-6 text-[0.74rem] font-normal uppercase tracking-[0.18em] text-[#F5EFE3]/86 transition duration-700 hover:border-[#F5EFE3]/42 hover:bg-white/[0.04] hover:text-white focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C9B99D]/70"
+              >
+                Erstes Gespräch vereinbaren
+              </Link>
+              <Link
+                href="/angebote"
+                className="inline-flex w-fit py-2 text-sm font-medium tracking-[0.08em] text-[#F5EFE3]/62 transition duration-700 hover:text-[#F5EFE3] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C9B99D]/70"
+              >
+                Angebote ansehen
+              </Link>
+            </div>
           </div>
         </div>
       </section>

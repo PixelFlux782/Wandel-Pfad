@@ -13,7 +13,7 @@ export default function FAQPage() {
       <div className="mx-auto max-w-5xl space-y-16">
         <SectionHeading title="FAQ" description="Klare Antworten auf häufige Fragen, damit du dich sicher fühlen kannst." className="max-w-3xl" />
 
-        <div className="quiet-panel grid gap-8 py-9 sm:px-8 lg:grid-cols-[0.28fr_0.72fr] lg:px-10">
+        <div className="grid gap-8 border-y border-text/[0.08] py-10 lg:grid-cols-[0.28fr_0.72fr]">
           <p className="eyebrow">Wichtig</p>
           <div>
             <h2 className="font-serif text-4xl font-medium leading-tight tracking-normal text-text">Ist das Therapie?</h2>

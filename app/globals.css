@@ -10,20 +10,29 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --paper: #F6F2EB;
+  --paper-warm: #F2EADF;
+  --paper-light: #FCF8F1;
+  --ink: #1F1C18;
+  --muted-ink: #4F4A44;
+  --hairline: rgba(31, 28, 24, 0.1);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--paper);
 }
 
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 10% -8%, rgba(217, 203, 191, 0.34), transparent 34rem),
-    radial-gradient(circle at 90% 18%, rgba(151, 139, 108, 0.12), transparent 32rem),
-    linear-gradient(180deg, #F9F5EE 0%, #F6F2EB 44%, #EFE7DC 100%);
-  color: #1F1C18;
-  line-height: 1.8;
+    radial-gradient(ellipse at 12% -6%, rgba(255, 252, 244, 0.72), transparent 34rem),
+    radial-gradient(ellipse at 86% 14%, rgba(217, 203, 191, 0.22), transparent 31rem),
+    radial-gradient(ellipse at 18% 78%, rgba(151, 139, 108, 0.08), transparent 33rem),
+    linear-gradient(180deg, var(--paper-light) 0%, var(--paper) 44%, var(--paper-warm) 100%);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.78;
 }
 
 body::before {
@@ -32,10 +41,22 @@ body::before {
   inset: 0;
   z-index: 55;
   pointer-events: none;
-  opacity: 0.075;
+  opacity: 0.045;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.64' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.42'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 24%, rgba(31, 28, 24, 0.018) 78%, transparent),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.34), transparent 42rem);
+  opacity: 0.55;
 }
 
 * {
@@ -54,7 +75,8 @@ h4 {
   font-family: var(--font-serif), Cormorant Garamond, serif;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1.06;
+  text-wrap: balance;
 }
 
 h1 {
@@ -66,7 +88,10 @@ h2 {
 }
 
 p {
-  color: #4F4A44;
+  color: var(--muted-ink);
+  max-width: 68ch;
+  line-height: 1.84;
+  text-wrap: pretty;
 }
 
 button,
@@ -97,30 +122,44 @@ textarea {
 
 .editorial-section {
   position: relative;
-  padding: clamp(6.5rem, 10vw, 11rem) 1.5rem;
+  padding: clamp(7.25rem, 11vw, 12.5rem) 1.5rem;
 }
 
 .editorial-section-compact {
   position: relative;
-  padding: clamp(5rem, 8vw, 8rem) 1.5rem;
+  padding: clamp(5.75rem, 8.5vw, 9rem) 1.5rem;
+}
+
+.editorial-section::before,
+.editorial-section-compact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(255, 255, 255, 0.18), transparent 34rem),
+    radial-gradient(ellipse at 88% 100%, rgba(136, 111, 88, 0.045), transparent 30rem);
 }
 
 .eyebrow {
-  font-size: 0.68rem;
-  line-height: 1.4;
-  letter-spacing: 0.34em;
+  font-size: 0.64rem;
+  line-height: 1.55;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(123, 116, 109, 0.9);
+  color: rgba(123, 116, 109, 0.78);
+  font-weight: 500;
 }
 
 .text-measure {
-  max-width: 38rem;
+  max-width: 36rem;
 }
 
 .quiet-panel {
-  border-top: 1px solid rgba(31, 28, 24, 0.13);
-  border-bottom: 1px solid rgba(31, 28, 24, 0.09);
-  background: linear-gradient(180deg, rgba(255, 252, 246, 0.36), rgba(244, 238, 228, 0.2));
+  border-top: 1px solid rgba(31, 28, 24, 0.085);
+  border-bottom: 1px solid rgba(31, 28, 24, 0.065);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.22), rgba(244, 238, 228, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
 }
 
 .hero-mask {
@@ -129,11 +168,11 @@ textarea {
 
 .film-grain {
   background-image:
-    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.72) 0 1px, transparent 1px),
-    radial-gradient(circle at 72% 48%, rgba(255, 255, 255, 0.34) 0 1px, transparent 1px),
-    radial-gradient(circle at 38% 76%, rgba(0, 0, 0, 0.44) 0 1px, transparent 1px),
-    linear-gradient(125deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.12));
-  background-size: 5px 5px, 7px 7px, 6px 6px, auto;
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1px),
+    radial-gradient(circle at 72% 48%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1px),
+    radial-gradient(circle at 38% 76%, rgba(0, 0, 0, 0.28) 0 1px, transparent 1px),
+    linear-gradient(125deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.08));
+  background-size: 6px 6px, 9px 9px, 8px 8px, auto;
 }
 
 @media (min-width: 640px) {

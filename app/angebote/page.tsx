@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { SectionHeading } from '@/components/section-heading';
 import { OfferCard } from '@/components/offer-card';
-import { Button } from '@/components/button';
 import { offerCards } from '@/lib/content';
 
 export const metadata = {
@@ -38,9 +37,9 @@ export default function AngebotePage() {
           className="max-w-4xl"
         />
 
-        <div className="mt-24 grid gap-x-16 gap-y-6 lg:grid-cols-2">
-          {offerCards.map((offer) => (
-            <OfferCard key={offer.title} {...offer} />
+        <div className="mt-24 grid gap-x-20 gap-y-10 lg:grid-cols-2 lg:gap-y-16">
+          {offerCards.map((offer, index) => (
+            <OfferCard key={offer.title} {...offer} index={index} />
           ))}
         </div>
 
@@ -60,8 +59,11 @@ export default function AngebotePage() {
               <p className="max-w-3xl text-base leading-8 text-[#504B44]">
                 Alle Angebote sind auch ohne Vorerfahrung möglich. Wichtig ist Offenheit für körperliche und erfahrungsorientierte Prozesse. Die Entscheidung für das passende Format entsteht gemeinsam, nicht nach Schema.
               </p>
-              <Link href="/termine" className="mt-9 inline-flex">
-                <Button>Erstes Gespräch vereinbaren</Button>
+              <Link
+                href="/termine"
+                className="mt-9 inline-flex min-h-11 items-center rounded-full border border-text/[0.16] px-5 text-[0.72rem] font-normal uppercase tracking-[0.18em] text-text/78 transition duration-700 hover:border-text/[0.3] hover:bg-text/[0.03] hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
+              >
+                Erstes Gespräch vereinbaren
               </Link>
             </div>
           </div>
