@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background-color: #F6F2EB;
+  color: #1F1C18;
+  font-family: Inter, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #F6F2EB;
+  color: #1F1C18;
+  line-height: 1.8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(136, 111, 88, 0.18);
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 3.8vw, 4.75rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+p {
+  color: #4F4A44;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.hero-mask {
+  background: linear-gradient(180deg, rgba(246, 242, 235, 0) 0%, rgba(246, 242, 235, 0.74) 58%, rgba(246, 242, 235, 1) 100%);
+}
