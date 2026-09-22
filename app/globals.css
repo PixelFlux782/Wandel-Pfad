@@ -17,6 +17,9 @@
   --ink: #1F1C18;
   --muted-ink: #4F4A44;
   --hairline: rgba(31, 28, 24, 0.1);
+  --green: #20322d;
+  --green-soft: #326358;
+  --sand: #eee5d8;
 }
 
 html {
@@ -35,6 +38,54 @@ body {
   font-size: 16px;
   line-height: 1.78;
 }
+
+.section-shell {
+  position: relative;
+  padding: clamp(6rem, 10vw, 10rem) 1.25rem;
+}
+
+.button-primary,
+.button-primary-dark,
+.button-secondary-dark {
+  display: inline-flex;
+  min-height: 3.25rem;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, transform 300ms ease;
+}
+
+.button-primary { background: var(--green); color: #f8f1e7; }
+.button-primary:hover { background: #2c4640; transform: translateY(-1px); }
+.button-primary-dark { background: #f5eee3; color: #1d302b; }
+.button-primary-dark:hover { background: #fffaf2; transform: translateY(-1px); }
+.button-secondary-dark { border-color: rgba(248, 241, 231, 0.32); color: rgba(248, 241, 231, 0.88); }
+.button-secondary-dark:hover { border-color: rgba(248, 241, 231, 0.68); color: #fff; }
+
+.text-link,
+.text-link-dark {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.75rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(32, 50, 45, 0.34);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #20322d;
+  transition: border-color 300ms ease, color 300ms ease;
+}
+
+.text-link:hover { border-color: #20322d; }
+.text-link-dark { border-color: rgba(246, 240, 230, 0.35); color: rgba(246, 240, 230, 0.82); }
+.text-link-dark:hover { border-color: rgba(246, 240, 230, 0.85); color: #fff; }
 
 body::before {
   content: '';
@@ -217,6 +268,11 @@ textarea {
 }
 
 @media (min-width: 640px) {
+  .section-shell {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .editorial-section,
   .editorial-section-compact {
     padding-left: 2rem;
@@ -225,10 +281,22 @@ textarea {
 }
 
 @media (min-width: 1024px) {
+  .section-shell {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
   .editorial-section,
   .editorial-section-compact {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-shell {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 

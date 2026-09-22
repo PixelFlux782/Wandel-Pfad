@@ -8,21 +8,21 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swa
 const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-serif', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'Wandel:Pfad | Raum für Wandel. Begleitung mit Tiefe.',
-  description: 'Ruhevolle, körperorientierte Begleitung für Menschen in Phasen von Stress, Erschöpfung und innerer Unruhe.',
+  title: {
+    default: 'Wandel | Atemarbeit, Coaching & Körperarbeit in Aschaffenburg',
+    template: '%s | Wandel'
+  },
+  description: 'Persönliche Begleitung mit Atemarbeit, Coaching und Körperarbeit in Aschaffenburg – bodenständig, individuell und auf Augenhöhe.',
   metadataBase: new URL('https://wandel-pfad.de'),
   openGraph: {
-    title: 'Wandel:Pfad',
-    description: 'Raum für Wandel. Begleitung mit Tiefe.',
+    title: 'Wandel | Simon Dalemans',
+    description: 'Atemarbeit, Coaching und Körperarbeit in Aschaffenburg.',
     url: new URL('https://wandel-pfad.de'),
-    siteName: 'Wandel:Pfad',
+    siteName: 'Wandel',
     images: ['/og-image.svg'],
     type: 'website'
   },
-  icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg'
-  }
+  icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

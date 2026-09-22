@@ -1,16 +1,16 @@
 export const siteMeta = {
-  title: 'Wandel:Pfad',
-  description: 'Ruhe. Klarheit. Körperorientierte Begleitung für Stress, Erschöpfung und Wandel.',
+  title: 'Wandel',
+  description: 'Persönliche Begleitung mit Atemarbeit, Coaching und Körperarbeit in Aschaffenburg.',
   smallNote: 'Heilpraktiker · Gesundheits- & Krankenpfleger · Breathwork · Körperarbeit'
 };
 
 export const navLinks = [
   { href: '/', label: 'Startseite' },
-  { href: '/angebote', label: 'Angebote' },
   { href: '/ueber-mich', label: 'Über mich' },
+  { href: '/angebote', label: 'Angebote' },
   { href: '/wie-ich-arbeite', label: 'Wie ich arbeite' },
+  { href: '/termine', label: 'Termine / Workshops' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/termine', label: 'Termine' },
   { href: '/kontakt', label: 'Kontakt' }
 ];
 
